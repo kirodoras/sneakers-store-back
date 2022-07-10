@@ -13,7 +13,7 @@ export async function getAllProducts(req, res) {
 export async function getProduct(req, res) {
     const { _id } = req.body;
     try {
-        const product = await db.collection("products").find({ _id: ObjectId(_id) }).toArray();
+        const product = await db.collection("products").findOne({ _id: ObjectId(_id) });
         res.send(product).status(302);
     } catch {
         res.sendStatus(500);
